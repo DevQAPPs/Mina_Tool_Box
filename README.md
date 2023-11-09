@@ -1,49 +1,161 @@
 # Mina_Tool_Box
-Mina tools, to view and ttrack validator uptime, network state, allow validators to monitor their node, verify voting results etc..
-The tool box will have various tools inside, I wanted to build this as a mobile application, will see.
 
-Validator Uptime Monitoring Tool:
+## Note on Final Product
 
-A service that continuously checks the online status of validators.
-Notification system to alert validators via email, SMS, or push notifications when their nodes go offline or have performance issues.
-Historical uptime statistics for validators to analyze their performance over time.
-Network State Dashboard:
+This Telegram bot serves as a PoC and demonstrates the core functionalities planned for the project. The final product will be a fully-fledged native mobile application, offering enhanced privacy features, a richer user interface, and a more comprehensive set of functionalities tailored to the needs of validators and delegators in the Mina Protocol ecosystem.
 
-A real-time visualization of the network's health, including block height, transaction volume, and network participation rate.
-Display of current consensus parameters and any ongoing votes or governance decisions.
-Analytics on block propagation times and network latency.
-Node Monitoring and Management Interface:
+## Overview
 
-Remote monitoring features to keep track of a node's resource usage, such as CPU, memory, and disk space.
-Integration with Mina's node software to retrieve and display real-time logs and operational metrics.
-Automated scripts or services to restart nodes or perform other maintenance tasks as needed.
-Voting Results Verification Tool:
+The Mina_Tool_Box is a Telegram bot designed for validators and delegators within the Mina Protocol blockchain ecosystem. It provides insights, notifications, and data analysis about validator performance, delegation changes, commission rates, and more. This bot serves as a proof of concept (PoC); the final product will be developed as a separate native mobile app for enhanced functionality and user experience.
 
-A tool that utilizes zk-SNARKs to verify the integrity and results of on-chain governance votes without compromising voter privacy.
-User-friendly interface to query and visualize voting outcomes and historical governance decisions.
-A system to track and verify validator voting history and their influence on governance decisions.
-Blockchain Explorer with Validator Insights:
+## Features
 
-An enhanced blockchain explorer tailored to Mina that provides insights into validator performance, such as blocks created, rewards earned, and penalties incurred.
-Visualization of the validator set, their respective stakes, and delegation networks.
-Features to explore and audit the complete history of validators' contributions to the network.
-Alerts and Anomaly Detection:
+### Implemented Features
 
-Machine learning models that analyze network data to detect unusual behavior or potential security threats.
-Customizable alerts for validators when potential issues or network anomalies are detected.
-APIs for Third-Party Integration:
+1. **Validator Address Tracking:** 
+    - Users can register validator addresses to monitor.
 
-Secure APIs that enable third-party services and tools to access validator and network performance data.
-Ability for validators to provide limited API access to their own monitoring data for centralized management services.
-Governance Participation Tools:
+2. **Validator Performance Metrics:**
+   - Uptime/Availability: Report on validator node uptime and any downtime incidents.
+   - Block Production: Information on the number of blocks produced by the validator.
+   - Expected vs. Actual Blocks: Comparison metrics to show performance.
 
-Interfaces for validators to participate in governance directly from their monitoring platform.
-Features to manage and submit proposals, participate in discussions, and cast votes securely.
-Rewards and Penalties Tracker:
+3. **Commission Changes:**
+   - Notify when a validator changes their commission rates.
+   - Historical commission rate changes for comparison.
 
-A system for validators to track their expected rewards, actual earnings, and any penalties incurred.
-Analytics to help validators optimize their operations and improve earnings.
-Comprehensive Logging and Reporting:
+4. **Delegation Updates:**
+   - Alerts on new delegations and undelegations.
+   - Notifications for large delegation changes that could impact the stability of the validator or the returns for other delegators.
 
-Advanced logging solutions to record and retrieve detailed operational data for debugging and optimization.
-Regular reporting features for validators to receive summaries of their node’s performance and network contributions.
+5. **Private Balance Check:** 
+   - A simplified encryption method is used for checking account balances or rewards privately.
+   - Provide updates on the balance of both the validator and the delegator’s accounts.
+   - Alert users when rewards are distributed.
+
+### Planned Features for Final Mobile App
+
+1. **Enhanced Private Balance Check:** 
+   - Implementing a more advanced privacy-preserving method utilizing zero-knowledge proofs.
+   - 
+2. **Ranking and Statistics:**
+   - Provide information on the ranking of validators by stake, performance, and other metrics.
+   - Give validators an understanding of their position in the overall network.
+
+3.  **Voting Power:**
+   - Report on the changes in voting power of the validator.
+
+4.  **Slashing Alerts:**
+   - Notify validators of any potential slashing events or risks.
+
+5.  **Network and Protocol Updates:**
+   - Inform about any upcoming protocol updates, governance proposals, and their outcomes.
+   - Notify about changes in network parameters that might affect validators and delegators.
+
+6.  **Price Tracking:**
+   - Include the current price of the native token and any significant price movements.
+
+7.  **Staking Rewards Calculator:**
+    - Provide estimations of daily, weekly, or monthly rewards based on the current staking amount.
+
+8.  **Downtime Alerts:**
+    - Instant alerts for validators if their node appears to be offline or missing blocks.
+
+9.  **Security Alerts:**
+    - Inform validators about any security threats or updates needed to secure their node.
+
+10. **Custom Threshold Notifications:**
+    - Allow users to set custom thresholds for balance changes or reward amounts to receive notifications.
+
+11. **Automated Health Checks:**
+    - Periodic reports on the health and status of the validator node.
+
+12. **Governance Participation:**
+    - Encourage and remind validators and delegators to participate in governance decisions.
+## Architecture
+```
+Mina_Tool_Box/
+│
+├── bot/                   # Telegram bot related modules
+│   ├── __init__.py        # Makes bot a Python module
+│   ├── bot.py             # Main bot functionalities
+│   └── handlers.py        # Command handlers for the bot
+│
+├── database/              # Database related operations
+│   ├── __init__.py        # Makes database a Python module
+│   ├── database.py        # Database connection and operations
+│   └── models.py          # Database models/schema
+│
+├── api/                   # External API interactions
+│   ├── __init__.py        # Makes api a Python module
+│   ├── mina_api.py        # Interactions with the MinaExplorer API
+│   └── encryption.py      # Encryption utilities for private queries
+│
+├── utils/                 # Utility functions and shared components
+│   ├── __init__.py        # Makes utils a Python module
+|   ├── common.py          # Storage utility functions that could be used across different modules
+│   └── visualization.py   # Data visualization utilities
+│
+├── scheduler/             # Scheduler for periodic tasks
+│   ├── __init__.py        # Makes scheduler a Python module
+│   └── scheduler.py       # Scheduling related functions
+│
+├── tests/                 # Unit tests and integration tests
+│   ├── __init__.py        # Makes tests a Python module
+│   ├── test_bot.py        # Tests for bot functionalities
+│   ├── test_database.py   # Tests for database operations
+│   └── test_api.py        # Tests for API interactions
+│
+├── config.py              # Configuration settings
+├── main.py                # Entry point of the application
+└── requirements.txt       # List of dependencies
+```
+### Modules
+
+**bot/:** Contains all the Telegram bot-related code. This includes the main bot script and the command handlers.
+**database/:** Manages all interactions with the database. It includes the connection setup and the database schema or models.
+**api/:** Handles all external API calls, specifically to the MinaExplorer API, and includes any encryption logic for private queries.
+**utils/:** A place for shared utility scripts like data visualization tools.
+**scheduler/:** Contains code related to scheduling tasks, such as checking validator statuses or updates.
+**tests/:** Includes all unit and integration tests for the different modules.
+**config.py:** A central configuration file where all settings like API keys, database URIs, and other configurations are stored.
+**main.py:** The entry point to the application which ties together the different modules.
+**requirements.txt:** Lists all the Python package dependencies for the project
+
+### Database
+
+- PostgreSQL is used for persistent storage of user preferences and cached data.
+
+### External APIs
+
+- MinaExplorer API for fetching blockchain-related data.
+- Additional APIs for price tracking and other external data sources.
+
+### Security
+
+- Encryption techniques are used for private data queries as a placeholder for future ZKP implementation.
+
+## Setup and Configuration
+
+### Prerequisites
+
+- Python 3.6+
+- PostgreSQL
+- Telegram Bot Token
+
+### Installation
+
+1. Clone the repository and install the required Python packages.
+2. Set up the PostgreSQL database and apply the initial schema from `database.py`.
+3. Configure your Telegram bot token and database connection string in `config.py`.
+
+### Running the Bot
+
+Execute `python bot.py` to start the bot. It will run as a background service and respond to user commands on Telegram.
+
+## Testing
+
+- Unit tests are provided in `test.py` for testing the core functionalities.
+- Integration tests to simulate user interaction with the bot and validate end-to-end workflows.
+
+---
