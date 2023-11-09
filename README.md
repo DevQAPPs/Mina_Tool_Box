@@ -37,23 +37,23 @@ The Mina_Tool_Box is a Telegram bot designed for validators and delegators withi
 
 1. **Enhanced Private Balance Check:** 
    - Implementing a more advanced privacy-preserving method utilizing zero-knowledge proofs.
-   - 
+  
 2. **Ranking and Statistics:**
    - Provide information on the ranking of validators by stake, performance, and other metrics.
    - Give validators an understanding of their position in the overall network.
 
 3.  **Voting Power:**
-   - Report on the changes in voting power of the validator.
+    - Report on the changes in voting power of the validator.
 
 4.  **Slashing Alerts:**
-   - Notify validators of any potential slashing events or risks.
+    - Notify validators of any potential slashing events or risks.
 
 5.  **Network and Protocol Updates:**
-   - Inform about any upcoming protocol updates, governance proposals, and their outcomes.
-   - Notify about changes in network parameters that might affect validators and delegators.
+    - Inform about any upcoming protocol updates, governance proposals, and their outcomes.
+    - Notify about changes in network parameters that might affect validators and delegators.
 
 6.  **Price Tracking:**
-   - Include the current price of the native token and any significant price movements.
+    - Include the current price of the native token and any significant price movements.
 
 7.  **Staking Rewards Calculator:**
     - Provide estimations of daily, weekly, or monthly rewards based on the current staking amount.
@@ -113,13 +113,21 @@ Mina_Tool_Box/
 ### Modules
 
 **bot/:** Contains all the Telegram bot-related code. This includes the main bot script and the command handlers.
+
 **database/:** Manages all interactions with the database. It includes the connection setup and the database schema or models.
+
 **api/:** Handles all external API calls, specifically to the MinaExplorer API, and includes any encryption logic for private queries.
+
 **utils/:** A place for shared utility scripts like data visualization tools.
+
 **scheduler/:** Contains code related to scheduling tasks, such as checking validator statuses or updates.
+
 **tests/:** Includes all unit and integration tests for the different modules.
+
 **config.py:** A central configuration file where all settings like API keys, database URIs, and other configurations are stored.
+
 **main.py:** The entry point to the application which ties together the different modules.
+
 **requirements.txt:** Lists all the Python package dependencies for the project
 
 ### Database
