@@ -1,6 +1,5 @@
 ##This script processes log files, filtering entries based on a specified time range. 
 ##It is specifically designed for log files that start with 'mina.log' and are formatted in JSON with timestamps.
-
 import os
 import json
 from datetime import datetime
